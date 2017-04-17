@@ -2,9 +2,10 @@ package com.hym.mvp.presenter;
 
 import android.os.AsyncTask;
 
+import com.hym.mvp.View.IShowData2ActView;
 import com.hym.mvp.View.IShowDataActView;
-import com.hym.mvp.model.IDataModel;
 import com.hym.mvp.model.DataModelImp;
+import com.hym.mvp.model.IDataModel;
 
 /**
  * File description here
@@ -14,7 +15,7 @@ import com.hym.mvp.model.DataModelImp;
  * @since 2017-04-10 17:20
  */
 
-public class DataPresenter extends BasePresenter<IShowDataActView> {
+public class DataPresenter2 extends BasePresenter<IShowData2ActView> {
     IDataModel mDataModelImp=new DataModelImp();
     public void getData(){
         new AsyncTask<Void,Void,String>(){
@@ -25,7 +26,7 @@ public class DataPresenter extends BasePresenter<IShowDataActView> {
 
             @Override
             protected void onPostExecute(String s) {
-                getView().updateUI(s);
+                getView().showToast("这是第二个presenter执行的结果");
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
